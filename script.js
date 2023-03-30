@@ -130,6 +130,7 @@ function toggleText(textId) {
 
 // SETTING-SECTION
 function scrollElement(e) {
+  sideBar.classList.remove("show");
   let element = document.getElementById(`${e}`);
   element.scrollIntoView({ block: "start", behavior: "smooth" });
 }
