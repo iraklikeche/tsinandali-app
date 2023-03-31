@@ -1825,14 +1825,15 @@ footer {
   }
 
   .center-photo {
-    height: 100%;
-    transform: translate(0%, 80%);
+    height: 45%;
+    transform: translate(0%, 100%);
   }
 
   .setting-title {
-    transform: rotate(360deg) translate(0%, 282%);
+    transform: rotate(360deg) translate(3%, 475%);
     bottom: 50%;
-    right: 2%;
+    right: -15%;
+    font-size: 5.8rem;
   }
 
   .right-photo {
@@ -1847,19 +1848,23 @@ footer {
 
   .top-photo {
     position: absolute;
-    top: 45%;
+    top: 28%;
     transform: translate(1%, 46%) rotate(320deg);
     width: 39%;
   }
 
   .setting-prev-next {
     font-size: 4.2rem;
-    bottom: -90%;
-    transform: translate(-128%, 50%);
+    bottom: 4%;
+    transform: translate(-100%, 50%);
+  }
+
+  .section-3 {
+    height: 175vh;
   }
 
   .section-4 {
-    padding: 75rem 0 10rem 0;
+    padding: 15rem 0 10rem 0;
     background-color: #f0f0f0;
   }
 
@@ -1891,13 +1896,13 @@ footer {
     transform: rotate(180deg);
   }
 
-  .foo {
+  /* .foo {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 5rem;
-  }
+  } */
 
   .enquire-container {
     background-color: #386741;
@@ -2085,6 +2090,9 @@ footer {
     border-bottom: 1px solid #bbb;
     margin-top: 5rem;
   }
+  #more {
+    display: none;
+  }
 }
 
 @media (max-width: 664px) {
@@ -2120,12 +2128,16 @@ footer {
   }
 
   .enquire-container {
-    width: 100%;
+    width: 70%;
+  }
+
+  .read-more-btn {
+    padding-left: 0;
   }
 
   .center-photo {
-    height: 85%;
-    transform: translate(0%, 80%);
+    height: 45%;
+    transform: translate(0%, 106%);
   }
   .left-photo {
     transform: rotate(7deg) translate(0%, 85%);
@@ -2145,5 +2157,8 @@ footer {
     color: #595959;
     font-size: 2.8rem;
     margin-top: 3rem;
+  }
+  .service-btn-padding {
+    padding-left: 2rem;
   }
 } ;

@@ -723,32 +723,6 @@ function myFunction(e) {
   }
 }
 
-// const arrowNext = document.querySelector(".setting-arrow-right");
-// const arrowPrev = document.querySelector(".setting-arrow-left");
-
-// function arrowBtnChange(val) {
-//   if (val === "next") {
-//     console.log(1);
-//   }
-//   if (val === "previous") {
-//     console.log(2);
-//   }
-// }
-
-// RESPONSIVE CAROUSEL
-
-// const villaDescription = [
-//   "Experience the synthesis of old-world charm and the future.",
-//   "Capture the senses of diversity with postmodernism approach to design.",
-//   "Live the contemporary lifestyle in harmony with new techniques.",
-// ];
-
-// const centuryNumber = document.querySelector(".century-number");
-// const villaDesc = document.querySelector(".villa-description");
-// const century19 = document.querySelector(".century-19");
-// const century20 = document.querySelector(".century-20");
-// const century21 = document.querySelector(".century-21");
-
 const foo1 = [
   "./images/villa/19th-wood.jpg",
   "./images/villa/19th-wood-3.jpg",
