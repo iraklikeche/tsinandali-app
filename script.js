@@ -131,6 +131,7 @@ function toggleText(textId) {
 // SETTING-SECTION
 function scrollElement(e) {
   sideBar.classList.remove("show");
+  menu.style.display = "block";
   let element = document.getElementById(`${e}`);
   element.scrollIntoView({ block: "start", behavior: "smooth" });
 }
@@ -733,3 +734,110 @@ function myFunction(e) {
 //     console.log(2);
 //   }
 // }
+
+// RESPONSIVE CAROUSEL
+
+// const villaDescription = [
+//   "Experience the synthesis of old-world charm and the future.",
+//   "Capture the senses of diversity with postmodernism approach to design.",
+//   "Live the contemporary lifestyle in harmony with new techniques.",
+// ];
+
+// const centuryNumber = document.querySelector(".century-number");
+// const villaDesc = document.querySelector(".villa-description");
+// const century19 = document.querySelector(".century-19");
+// const century20 = document.querySelector(".century-20");
+// const century21 = document.querySelector(".century-21");
+
+const foo1 = [
+  "./images/villa/19th-wood.jpg",
+  "./images/villa/19th-wood-3.jpg",
+  "./images/villa/19th-wood-2.jpg",
+];
+
+let photoIndex1 = 0;
+let photoIndex2 = 1;
+let photoIndex3 = 2;
+
+const photo1 = document.querySelector("#villa-1");
+const photo2 = document.querySelector("#villa-2");
+const photo3 = document.querySelector("#villa-3");
+const century = document.querySelector("#century");
+const villaDescMobile = document.querySelector("#villa-desc-mobile");
+const foo2 = [
+  {
+    century: "19",
+    text: "Experience the synthesis of old-world charm and the future.",
+  },
+  {
+    century: "20",
+    text: "Capture the senses of diversity with postmodernism approach to design.",
+  },
+  {
+    century: "21",
+    text: "Live the contemporary lifestyle in harmony with new techniques.",
+  },
+];
+
+function changeImageScale(val) {
+  if (val === "next") {
+    photoIndex1++;
+    photoIndex2++;
+    photoIndex3++;
+
+    if (foo1[photoIndex1] === undefined) {
+      photoIndex1 = 0;
+      photo1.src = foo1[photoIndex1];
+      century.textContent = foo2[photoIndex1].century;
+      villaDescMobile.textContent = foo2[photoIndex1].text;
+    } else {
+      photo1.src = foo1[photoIndex1];
+
+      century.textContent = foo2[photoIndex1].century;
+      villaDescMobile.textContent = foo2[photoIndex1].text;
+    }
+
+    if (foo1[photoIndex2] === undefined) {
+      photoIndex2 = 0;
+      photo2.src = foo1[photoIndex2];
+    } else {
+      photo2.src = foo1[photoIndex2];
+    }
+    if (foo1[photoIndex3] === undefined) {
+      photoIndex3 = 0;
+      photo3.src = foo1[photoIndex3];
+    } else {
+      photo3.src = foo1[photoIndex3];
+    }
+  }
+
+  if (val === "previous") {
+    photoIndex1--;
+    photoIndex2--;
+    photoIndex3--;
+
+    if (foo1[photoIndex1] === undefined) {
+      photoIndex1 = 2;
+      photo1.src = foo1[photoIndex1];
+      century.textContent = foo2[photoIndex1].century;
+      villaDescMobile.textContent = foo2[photoIndex1].text;
+    } else {
+      photo1.src = foo1[photoIndex1];
+      century.textContent = foo2[photoIndex1].century;
+      villaDescMobile.textContent = foo2[photoIndex1].text;
+    }
+
+    if (foo1[photoIndex2] === undefined) {
+      photoIndex2 = 2;
+      photo2.src = foo1[photoIndex2];
+    } else {
+      photo2.src = foo1[photoIndex2];
+    }
+    if (foo1[photoIndex3] === undefined) {
+      photoIndex3 = 2;
+      photo3.src = foo1[photoIndex3];
+    } else {
+      photo3.src = foo1[photoIndex3];
+    }
+  }
+}

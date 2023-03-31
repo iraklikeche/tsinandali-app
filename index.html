@@ -488,7 +488,7 @@
         <div class="villa-header">
           <h2 class="century-heading">Choose Your Century</h2>
           <div class="arrows">
-            <button class="btn-arrow" onclick="arrowBtnChange('previous')">
+            <button class="btn-arrow" onclick="changeImageScale('previous')">
               <svg
                 class="setting-arrow-left"
                 xmlns="http://www.w3.org/2000/svg"
@@ -502,7 +502,7 @@
                 />
               </svg>
             </button>
-            <button class="btn-arrow" onclick="arrowBtnChange('next')">
+            <button class="btn-arrow" onclick="changeImageScale('next')">
               <svg
                 class="setting-arrow-right"
                 xmlns="http://www.w3.org/2000/svg"
@@ -518,23 +518,37 @@
             </button>
           </div>
         </div>
-        <div class="foo">
+        <div class="container-fluid">
           <div id="id-carousel" class="carousel-case-2">
             <div class="card">
-              <img src="./images/villa/19th-wood.jpg" class="villa-1-photo" />
+              <img
+                src="./images/villa/19th-wood.jpg"
+                class="villa-1-photo"
+                id="villa-1"
+              />
             </div>
             <div class="card">
-              <img src="./images/villa/19th-wood-3.jpg" class="villa-2-photo" />
+              <img
+                src="./images/villa/19th-wood-3.jpg"
+                class="villa-2-photo"
+                id="villa-2"
+                style="height: 550px; z-index: 999"
+              />
             </div>
             <div class="card">
-              <img src="./images/villa/19th-wood-2.jpg" class="villa-4-photo" />
+              <img
+                src="./images/villa/19th-wood-2.jpg"
+                class="villa-4-photo"
+                id="villa-3"
+              />
             </div>
           </div>
           <div class="century-text-box-case-2">
             <span class="th-century"
-              >19<span class="century-text">th Century Villa</span></span
+              ><span id="century">19</span
+              ><span class="century-text">th Century Villa</span></span
             >
-            <p class="villa-description">
+            <p class="villa-description" id="villa-desc-mobile">
               Experience the synthesis of old-world charm and the future.
             </p>
           </div>
@@ -595,7 +609,6 @@
                       >Event <br class="service-break-point" />
                       Planning</span
                     >
-                    <!-- <span class="service-title">Planning</span> -->
                   </div>
                 </div>
                 <p class="service-details details-1">
@@ -653,7 +666,11 @@
               >
               <span class="ellipsis">...</span>
             </p>
-            <button class="read-more-btn" onclick="toggleText('text3')">
+            <button
+              class="read-more-btn"
+              onclick="toggleText('text3')"
+              style="font-size: 2.4rem"
+            >
               Read More
             </button>
           </div>
