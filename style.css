@@ -481,6 +481,25 @@ hr {
   font-weight: 500;
 }
 
+/* ********************  FADE ANIMATIONS ******************** */
+
+.custom-animation {
+  transform: translate3d(0, 30px, 0);
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.custom-fade .custom-animation {
+  transition: all 0.75s ease;
+  -webkit-transform: translateZ(0px);
+  transform: translateZ(0px);
+  opacity: 1;
+}
+
+.custom-fade .custom-animation {
+  transition-delay: 0.2s;
+}
+
 .history-text {
   color: #333;
   font-size: 1.8rem;
@@ -507,8 +526,8 @@ hr {
 .btn-position {
   display: flex;
   align-items: flex-end;
-  /* display: none; */
 }
+
 .hidden-text {
   display: none;
 }

@@ -186,12 +186,13 @@
     <section class="section-2" id="about">
       <div class="container">
         <div class="breath-of-history row case-1">
-          <div class="history-text col-sm-12 col-md-6 col-lg-6">
-            <!-- <div class="history-text"> -->
-            <h3 class="history-heading">A Breath of History</h3>
+          <div class="history-text col-sm-12 col-md-6 col-lg-6 animate-area">
+            <h3 class="history-heading custom-animation">
+              A Breath of History
+            </h3>
             <div class="history-desc-wrapper">
               <div class="history-desc">
-                <p class="history-desc-text">
+                <p class="history-desc-text custom-animation">
                   Tsinandali estate, as one of the epicenters of Georgian
                   cultural life, has been around for more than two hundred
                   years, preserving the status to this day. The place, once home
@@ -224,8 +225,13 @@
               src="./images/about-imgs/1.png"
               class="main-photo"
               id="photo"
+              data-scroll-zoom
             />
-            <img src="./images/about-imgs/2.png" class="secondary parallax" />
+            <img
+              src="./images/about-imgs/2.png"
+              class="secondary parallax"
+              data-scroll-zoom
+            />
             <ul class="prev-next">
               <li class="previous">
                 <button onclick="changeImage('previous')" class="btn btn-prev">
@@ -336,7 +342,7 @@
     </section>
 
     <section class="section-3" id="setting">
-      <div class="container">
+      <div class="container animate-area">
         <div class="setting-title-wrapper">
           <span class="setting-title">mountains</span>
         </div>
@@ -344,8 +350,10 @@
           <div class="col-sm-12 col-md-6">
             <div class="container">
               <div class="case-1">
-                <h3 class="setting-heading">A Charming Setting</h3>
-                <p class="setting-description" id="text2">
+                <h3 class="setting-heading custom-animation">
+                  A Charming Setting
+                </h3>
+                <p class="setting-description custom-animation" id="text2">
                   A show-stopping setting of an ancient vineyard, lush green
                   valleys, and breathtaking vistas at every
                   <span class=""
@@ -424,10 +432,10 @@
     </section>
 
     <section class="section-4" id="villas">
-      <div class="case-1">
+      <div class="case-1 animate-area">
         <div>
-          <h1 class="century-heading">Choose Your Century</h1>
-          <ul class="century">
+          <h1 class="century-heading custom-animation">Choose Your Century</h1>
+          <ul class="century custom-animation">
             <li class="th-century century-19" onclick="changeCenturyTo19()">
               <span>19</span><span class="century-text">th Century</span>
             </li>
@@ -459,9 +467,9 @@
           </div>
         </div>
 
-        <div class="enquire-container">
+        <div class="enquire-container animate-area">
           <a href="#contact">
-            <span class="enquire">/ ENQUIRE TO BUY</span>
+            <span class="enquire custom-animation">/ ENQUIRE TO BUY</span>
           </a>
         </div>
       </div>
@@ -543,12 +551,12 @@
     </section>
 
     <section class="section-5" id="services">
-      <div class="service container case-1">
+      <div class="service container case-1 animate-area">
         <div class="service-nav">
-          <h3 class="service-heading">Bespoke Services</h3>
+          <h3 class="service-heading custom-animation">Bespoke Services</h3>
 
           <div>
-            <ul class="service-button">
+            <ul class="service-button custom-animation">
               <li>
                 <button
                   class="service-btn service-previous"
@@ -583,7 +591,7 @@
           <div class="service-list-box">
             <div class="list-1">
               <div class="list-hover-1">
-                <div class="span-elements">
+                <div class="span-elements custom-animation">
                   <span class="service-number number-1">01</span>
                   <div class="service-title-box">
                     <span class="service-title title-1"
@@ -592,7 +600,7 @@
                     >
                   </div>
                 </div>
-                <p class="service-details details-1">
+                <p class="service-details details-1 custom-animation">
                   Private arrangement of your event with all details taken into
                   consideration.
                 </p>
@@ -601,13 +609,13 @@
 
             <div class="list-2">
               <div class="list-hover-2">
-                <div class="span-elements">
+                <div class="span-elements custom-animation">
                   <span class="service-number number-2">02</span>
                   <div class="service-title-box">
                     <span class="service-title title-2">Spa & Gym <br /></span>
                   </div>
                 </div>
-                <p class="service-details details-2">
+                <p class="service-details details-2 custom-animation">
                   Special owner's 10% discount on the neighbouring Radisson
                   Collection's services.
                 </p>
@@ -616,13 +624,13 @@
 
             <div class="list-3">
               <div class="list-hover-3">
-                <div class="span-elements">
+                <div class="span-elements custom-animation">
                   <span class="service-number number-3">03</span>
                   <div class="service-title-box">
                     <span class="service-title title-3">Best Rates <br /></span>
                   </div>
                 </div>
-                <p class="service-details details-3">
+                <p class="service-details details-3 custom-animation">
                   For the hotel rooms in Radisson Collection Tsinandali,
                   Radisson Blu Batumi, and Radisson Blu Tbilisi.
                 </p>
@@ -703,8 +711,8 @@
     </section>
 
     <section class="section-6" id="winemaking">
-      <div class="winemaking-box container">
-        <div class="winemaking-text">
+      <div class="winemaking-box container animate-area">
+        <div class="winemaking-text custom-animation">
           <h2 class="winemaking-title">Winemaking At Your Doorsteps</h2>
           <p class="winemaking-description">
             At Tsinandali Villa Estate, residents have the opportunity to live
@@ -715,22 +723,22 @@
             Tsinandali’s legacy as the cradle of Georgia’s classical winemaking.
           </p>
         </div>
-        <div class="winemaking-image-box">
+        <div class="winemaking-image-box animate-area">
           <img
             src="./images/winemaking/winameking-1-.jpg"
             class="winemaking-photo"
           />
-          <div class="winemaking-dots">
+          <div class="winemaking-dots animate-area">
             <span
-              class="wine-dot wine-1"
+              class="wine-dot wine-1 custom-animation"
               onclick="changeWinemakingCover1()"
             ></span>
             <span
-              class="wine-dot wine-2"
+              class="wine-dot wine-2 custom-animation"
               onclick="changeWinemakingCover2()"
             ></span>
             <span
-              class="wine-dot wine-3"
+              class="wine-dot wine-3 custom-animation"
               onclick="changeWinemakingCover3()"
             ></span>
           </div>
@@ -740,9 +748,11 @@
 
     <footer id="contact">
       <div class="contact container">
-        <div class="box-1">
-          <h4 class="contact-heading desktop-heading">Contact</h4>
-          <ul class="contact-list">
+        <div class="box-1 animate-area">
+          <h4 class="contact-heading desktop-heading custom-animation">
+            Contact
+          </h4>
+          <ul class="contact-list custom-animation">
             <li>
               <a href="mailto:contact@tsinandalivillas.com" class="email-link"
                 >contact@tsinandalivillas.com</a
@@ -753,13 +763,16 @@
             </li>
           </ul>
         </div>
-        <div class="box-2">
-          <h4 class="contact-heading">
+        <div class="box-2 animate-area">
+          <h4 class="contact-heading custom-animation">
             The Perfect <br />
             Space For Your Home
           </h4>
-          <div>
-            <form class="contact-inputs" onSubmit="myFunction(event)">
+          <div class="animate-are">
+            <form
+              class="contact-inputs custom-animation"
+              onSubmit="myFunction(event)"
+            >
               <div class="full-name">
                 <input
                   type="text"
@@ -800,9 +813,11 @@
             </form>
           </div>
         </div>
-        <div class="box-3">
-          <h4 class="contact-heading social-media">Social Media</h4>
-          <div class="social-subscription">
+        <div class="box-3 animate-area">
+          <h4 class="contact-heading social-media custom-animation">
+            Social Media
+          </h4>
+          <div class="social-subscription custom-animation">
             <div class="foot-links">
               <a
                 href="https://www.facebook.com/radissoncollectionhoteltsinandaliestategeorgia"
@@ -860,8 +875,8 @@
           </div>
         </div>
       </div>
-      <div class="footer-links container">
-        <div>
+      <div class="footer-links container animate-area">
+        <div class="custom-animation">
           <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#setting">Setting</a></li>
@@ -871,7 +886,7 @@
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
-        <div class="privacy-policy">
+        <div class="privacy-policy custom-animation">
           <a
             target="_blank"
             href="https://static.tsinandaliestatevillas.com/350a2acbf0001f73911aefab384dc0af02502f2ada0a0642d40b461b17291b94.pdf"

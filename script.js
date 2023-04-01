@@ -28,6 +28,22 @@ function showSlides(n) {
   dots[slideIndex - 1].className += " active-slide";
 }
 
+// ********************* ANIMATION-FADE ************************
+const animateArea = document.querySelectorAll(".animate-area");
+
+observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.intersectionRatio > 0) {
+      entry.target.classList.add("custom-fade");
+      observer.unobserve(entry.target);
+    }
+  });
+});
+
+animateArea.forEach((item) => {
+  observer.observe(item);
+});
+
 // **************** MENU ********************
 
 const sideBar = document.querySelector("#side-bar");
