@@ -151,32 +151,13 @@ function scrollElement(e) {
   let element = document.getElementById(`${e}`);
   element.scrollIntoView({ block: "start", behavior: "smooth" });
 }
-const arrayOfCenterPhotoSetting = [
-  "./images/setting-imgs/Mountains.png",
-  "./images/setting-imgs/Vineyard.png",
-  "./images/setting-imgs/Sports.png",
-  "./images/setting-imgs/SPA1.png",
-];
-const arrayOfLeftPhotoSetting = [
-  "./images/setting-imgs/SPA1.png",
-  "./images/setting-imgs/Mountains.png",
-  "./images/setting-imgs/Vineyard.png",
-  "./images/setting-imgs/Sports.png",
-];
-const arrayOfTopPhotoSetting = [
-  "./images/setting-imgs/Sports.png",
-  "./images/setting-imgs/SPA1.png",
-  "./images/setting-imgs/Mountains.png",
-  "./images/setting-imgs/Vineyard.png",
-];
-const arrayOfRightPhotoSetting = [
-  "./images/setting-imgs/Vineyard.png",
-  "./images/setting-imgs/Sports.png",
-  "./images/setting-imgs/SPA1.png",
-  "./images/setting-imgs/Mountains.png",
-];
 
-const arrayOfTitles = ["mountains", "wineyard", "sports", "spa"];
+const arrayOfImages = [
+  { title: "mountains", src: "./images/setting-imgs/Mountains.png" },
+  { title: "wineyard", src: "./images/setting-imgs/Vineyard.png" },
+  { title: "sports", src: "./images/setting-imgs/Sports.png" },
+  { title: "spa", src: "./images/setting-imgs/SPA1.png" },
+];
 
 const settingTitle = document.querySelector(".setting-title");
 const btnNextSetting = document.querySelector(".btn-next-setting");
@@ -187,395 +168,247 @@ const topPhoto = document.querySelector(".top-photo");
 const rightPhoto = document.querySelector(".right-photo");
 btnPrevSetting.disabled = true;
 
-const pseudoEl = document.querySelector(".setting-title-wrapper");
-
 let settingPhoto = 0;
 
+function getImageIndex(index, arrayLength) {
+  return (index + arrayLength) % arrayLength;
+}
+
 function changeImageSetting(val) {
-  if (val === "previous") {
-    settingPhoto--;
-    centerPhoto.src = arrayOfCenterPhotoSetting[settingPhoto];
-    console.log(arrayOfRightPhotoSetting.length);
-    leftPhoto.src = arrayOfLeftPhotoSetting[settingPhoto];
-    topPhoto.src = arrayOfTopPhotoSetting[settingPhoto];
-    rightPhoto.src = arrayOfRightPhotoSetting[settingPhoto];
-  } else {
-    settingPhoto++;
+  settingPhoto = val === "previous" ? settingPhoto - 1 : settingPhoto + 1;
+  const arrayLength = arrayOfImages.length;
 
-    centerPhoto.src = arrayOfCenterPhotoSetting[settingPhoto];
-    leftPhoto.src = arrayOfLeftPhotoSetting[settingPhoto];
-    topPhoto.src = arrayOfTopPhotoSetting[settingPhoto];
-    rightPhoto.src = arrayOfRightPhotoSetting[settingPhoto];
-  }
+  centerPhoto.src = arrayOfImages[getImageIndex(settingPhoto, arrayLength)].src;
+  leftPhoto.src =
+    arrayOfImages[getImageIndex(settingPhoto - 1, arrayLength)].src;
+  topPhoto.src =
+    arrayOfImages[getImageIndex(settingPhoto - 2, arrayLength)].src;
+  rightPhoto.src =
+    arrayOfImages[getImageIndex(settingPhoto + 1, arrayLength)].src;
 
-  settingTitle.textContent = arrayOfTitles[settingPhoto];
+  settingTitle.textContent = arrayOfImages[settingPhoto].title;
 
-  if (settingPhoto === arrayOfCenterPhotoSetting.length - 1) {
-    btnNextSetting.disabled = true;
-  } else {
-    btnNextSetting.disabled = false;
-  }
-
-  if (settingPhoto === arrayOfRightPhotoSetting.length - 4) {
-    btnPrevSetting.disabled = true;
-  } else {
-    btnPrevSetting.disabled = false;
-  }
+  btnNextSetting.disabled = settingPhoto === arrayLength - 1;
+  btnPrevSetting.disabled = settingPhoto === 0;
 }
 
 // ******* SECTION - VILLA ***************
-const century1 = [
-  "./images/villa/19th-wood.jpg",
-  "./images/villa/19th-wood-3.jpg",
-  "./images/villa/19th-wood-2.jpg",
-];
 
-const century2 = [
-  "./images/villa/20th-brick-1.jpg",
-  "./images/villa/20th-brick-3.jpg",
-  "./images/villa/20th-brick-2.jpg",
-];
-
-const century3 = [
-  "./images/villa/21st-stone-1.jpg",
-  "./images/villa/21th-stone-2.png",
-  "./images/villa/21th-stone-3.png",
-];
-
-const villaDescription = [
-  "Experience the synthesis of old-world charm and the future.",
-  "Capture the senses of diversity with postmodernism approach to design.",
-  "Live the contemporary lifestyle in harmony with new techniques.",
+const centuries = [
+  {
+    images: [
+      "./images/villa/19th-wood.jpg",
+      "./images/villa/19th-wood-3.jpg",
+      "./images/villa/19th-wood-2.jpg",
+    ],
+    description: "Experience the synthesis of old-world charm and the future.",
+  },
+  {
+    images: [
+      "./images/villa/20th-brick-1.jpg",
+      "./images/villa/20th-brick-3.jpg",
+      "./images/villa/20th-brick-2.jpg",
+    ],
+    description:
+      "Capture the senses of diversity with postmodernism approach to design.",
+  },
+  {
+    images: [
+      "./images/villa/21st-stone-1.jpg",
+      "./images/villa/21th-stone-2.png",
+      "./images/villa/21th-stone-3.png",
+    ],
+    description:
+      "Live the contemporary lifestyle in harmony with new techniques.",
+  },
 ];
 
 const centuryNumber = document.querySelector(".century-number");
 const villaDesc = document.querySelector(".villa-description");
-const century19 = document.querySelector(".century-19");
-const century20 = document.querySelector(".century-20");
-const century21 = document.querySelector(".century-21");
+const centuryButtons = document.querySelectorAll(".century-btn");
 const villa1 = document.querySelector(".villa-1-photo");
 const villa2 = document.querySelector(".villa-2-photo");
 const villa4 = document.querySelector(".villa-4-photo");
-century19.style.color = "#386741";
 
-function changeCenturyTo19() {
-  villa1.src = century1[0];
-  villa2.src = century1[1];
-  villa4.src = century1[2];
-  centuryNumber.textContent = "19";
-  century19.style.color = "#386741";
-  century20.style.color = "#393939";
-  century21.style.color = "#393939";
-  villaDesc.textContent = villaDescription[0];
+function changeCentury(index) {
+  villa1.src = centuries[index].images[0];
+  villa2.src = centuries[index].images[1];
+  villa4.src = centuries[index].images[2];
+  centuryNumber.textContent = index + 19;
+  villaDesc.textContent = centuries[index].description;
+
+  centuryButtons.forEach((btn, i) => {
+    btn.style.color = i === index ? "#386741" : "#393939";
+  });
 }
 
-function changeCenturyTo20() {
-  villa1.src = century2[0];
-  villa2.src = century2[1];
-  villa4.src = century2[2];
-  centuryNumber.textContent = "20";
-  century20.style.color = "#386741";
-  century19.style.color = "#393939";
-  century21.style.color = "#393939";
-  villaDesc.textContent = villaDescription[1];
-}
-
-function changeCenturyTo21() {
-  villa1.src = century3[0];
-  villa2.src = century3[1];
-  villa4.src = century3[2];
-  centuryNumber.textContent = "21";
-  century19.style.color = "#393939";
-  century20.style.color = "#393939";
-  century21.style.color = "#386741";
-  villaDesc.textContent = villaDescription[2];
-}
+// Initial setup
+changeCentury(0);
+centuryButtons.forEach((btn) => {
+  const index = parseInt(btn.getAttribute("data-index"));
+  btn.addEventListener("click", () => changeCentury(index));
+});
 
 // *********** SECTION-SERVICE **************
-const serviceList1 = ["01", "04", "07", "10", "13"];
-const serviceList2 = ["02", "05", "08", "11", "14"];
-const serviceList3 = ["03", "06", "09", "12", "15"];
-const serviceTitle1Array = [
-  "Event Planning",
-  "Equipment Rental",
-  "Entertainment",
-  "Helipad",
-  "Top chefs for pop-up dinner",
-];
-const serviceTitle2Array = [
-  "Spa & Gym",
-  "Kid's Zone Entertainment",
-  "Farm-to-table food scene",
-  "Heliskiing",
-  "Property Maintenance",
-];
-const serviceTitle3Array = [
-  "Best Rates",
-  "Maintanance",
-  "Housekeeping",
-  "Food & Beverage",
-  "Laundry & Dry Cleaning",
-];
 
-const serviceDetailsArray1 = [
-  "Private arrangement of your event with all details taken into consideration.",
-  "Bikes, tennis and basketball accessories.",
-  "Tsinandali Festival, Jazz & Wine Festival. Priority ticketing and special discounts.",
-  "Owners can benefit from the flight service at an extra cost.",
-  "Bringing a truly gastronomic experience to one’s doorstep.",
-];
-const serviceDetailsArray2 = [
-  "Special owner's 10% discount on the neighbouring Radisson Collection's services.",
-  "Open to hotel guests and villa owners.",
-  "Georgia is famous for its fresh and organic produce; therefore, concierges can arrange morning delivery with a basket full of local produce.",
-  "Package offered at a special price.",
-  "In case anything goes wrong, we have 24/7 technical support available.",
-];
-const serviceDetailsArray3 = [
-  "For the hotel rooms in Radisson Collection Tsinandali, Radisson Blu Batumi, and Radisson Blu Tbilisi.",
-  "Of the green species and access, including lawn mowing, pruning, weeding, green waste management, along with maintaining the pool and waste.",
-  "Home personally verified by the staff to be in pristine condition.",
-  "Ordering special meals from the restaurants at the Radisson Collection Hotel.",
-  "Our staff will arrange the procedure according to your desires.",
-];
-
-const serviceListMobile = [
+const serviceLists = [
   {
-    number: "01",
-    title: "Event Planning",
-    details:
-      "For the hotel rooms in Radisson Collection Tsinandali, Radisson Blu Batumi, and Radisson Blu Tbilisi.",
-  },
-  {
-    number: "02",
-    title: "Spa & Gym",
-    details:
-      "Special owner's 10% discount on the neighbouring Radisson Collection's services.",
-  },
-  {
-    number: "03",
-    title: "Best Rates",
-    details:
+    numbers: ["01", "04", "07", "10", "13"],
+    titles: [
+      "Event Planning",
+      "Equipment Rental",
+      "Entertainment",
+      "Helipad",
+      "Top chefs for pop-up dinner",
+    ],
+    details: [
       "Private arrangement of your event with all details taken into consideration.",
-  },
-  {
-    number: "04",
-    title: "Equipment Rental",
-    details:
-      "Of the green species and access, including lawn mowing, pruning, weeding, green waste management, along with maintaining the pool and waste.",
-  },
-  {
-    number: "05",
-    title: "Kid's Zone Entertainment",
-    details: "Open to hotel guests and villa owners.",
-  },
-  {
-    number: "06",
-    title: "Maintanance",
-    details:
-      "Of the green species and access, including lawn mowing, pruning, weeding, green waste management, along with maintaining the pool and waste.",
-  },
-  {
-    number: "07",
-    title: "Entertainment",
-    details:
+      "Bikes, tennis and basketball accessories.",
       "Tsinandali Festival, Jazz & Wine Festival. Priority ticketing and special discounts.",
+      "Owners can benefit from the flight service at an extra cost.",
+      "Bringing a truly gastronomic experience to one’s doorstep.",
+    ],
   },
   {
-    number: "08",
-    title: "Farm-to-table food scene",
-    details:
+    numbers: ["02", "05", "08", "11", "14"],
+    titles: [
+      "Spa & Gym",
+      "Kid's Zone Entertainment",
+      "Farm-to-table food scene",
+      "Heliskiing",
+      "Property Maintenance",
+    ],
+    details: [
+      "Special owner's 10% discount on the neighbouring Radisson Collection's services.",
+      "Open to hotel guests and villa owners.",
       "Georgia is famous for its fresh and organic produce; therefore, concierges can arrange morning delivery with a basket full of local produce.",
+      "Package offered at a special price.",
+      "In case anything goes wrong, we have 24/7 technical support available.",
+    ],
   },
   {
-    number: "09",
-    title: "Housekeeping",
-    details:
+    numbers: ["03", "06", "09", "12", "15"],
+    titles: [
+      "Best Rates",
+      "Maintanance",
+      "Housekeeping",
+      "Food & Beverage",
+      "Laundry & Dry Cleaning",
+    ],
+    details: [
+      "For the hotel rooms in Radisson Collection Tsinandali, Radisson Blu Batumi, and Radisson Blu Tbilisi.",
+      "Of the green species and access, including lawn mowing, pruning, weeding, green waste management, along with maintaining the pool and waste.",
       "Home personally verified by the staff to be in pristine condition.",
-  },
-  {
-    number: "10",
-    title: "Helipad",
-    details: "Owners can benefit from the flight service at an extra cost.",
-  },
-  {
-    number: "11",
-    title: "Heliskiing",
-    details: "Package offered at a special price.",
-  },
-  {
-    number: "12",
-    title: "Food & Beverage",
-    details:
       "Ordering special meals from the restaurants at the Radisson Collection Hotel.",
-  },
-  {
-    number: "13",
-    title: "Top chefs for pop-up dinners",
-    details: "Bringing a truly gastronomic experience to one’s doorstep.",
-  },
-  {
-    number: "14",
-    title: "Property Maintenance",
-    details:
-      "In case anything goes wrong, we have 24/7 technical support available., and Radisson Blu Tbilisi.",
-  },
-  {
-    number: "15",
-    title: "Laundry & Dry Cleaning",
-    details: "Our staff will arrange the procedure according to your desires.",
+      "Our staff will arrange the procedure according to your desires.",
+    ],
   },
 ];
 
-const serviceNumberMobile = document.querySelector(".service-number-mobile");
-const serviceTitleMobile = document.querySelector(".service-title-mobile");
-const serviceDetailMobile = document.querySelector(".service-details-mobile");
-const serviceBtnNextMobile = document.querySelector("#service-btn-mobile-next");
-const serviceBtnPreviousMobile = document.querySelector(
-  "#service-btn-mobile-previous"
-);
-let i = 0;
+const serviceNumberEls = [
+  document.querySelector(".number-1"),
+  document.querySelector(".number-2"),
+  document.querySelector(".number-3"),
+];
 
-serviceBtnPreviousMobile.disabled = true;
+const serviceTitleEls = [
+  document.querySelector(".title-1"),
+  document.querySelector(".title-2"),
+  document.querySelector(".title-3"),
+];
 
-function changeServiceMobile(val) {
-  if (val === "previous") {
-    i--;
-    serviceNumberMobile.textContent = serviceListMobile[i].number;
-    serviceTitleMobile.textContent = serviceListMobile[i].title;
-    serviceDetailMobile.textContent = serviceListMobile[i].details;
-  }
-  if (val === "next") {
-    i++;
-    serviceNumberMobile.textContent = serviceListMobile[i].number;
-    serviceTitleMobile.textContent = serviceListMobile[i].title;
-    serviceDetailMobile.textContent = serviceListMobile[i].details;
-  }
+const serviceDetailsEls = [
+  document.querySelector(".details-1"),
+  document.querySelector(".details-2"),
+  document.querySelector(".details-3"),
+];
 
-  if (i === serviceListMobile.length - 1) {
-    serviceBtnNextMobile.disabled = true;
-  } else {
-    serviceBtnNextMobile.disabled = false;
-  }
+const listEls = [
+  document.querySelector(".list-hover-1"),
+  document.querySelector(".list-hover-2"),
+  document.querySelector(".list-hover-3"),
+];
 
-  if (i === 0) {
-    serviceBtnPreviousMobile.disabled = true;
-  } else {
-    serviceBtnPreviousMobile.disabled = false;
-  }
-}
-
-const serviceNumber1 = document.querySelector(".number-1");
-const serviceNumber2 = document.querySelector(".number-2");
-const serviceNumber3 = document.querySelector(".number-3");
-const serviceTitle = document.querySelector(".service-title");
 const serviceBtnNext = document.querySelector(".service-next");
 const serviceBtnPrevious = document.querySelector(".service-previous");
-const serviceTitle1 = document.querySelector(".title-1");
-const serviceTitle2 = document.querySelector(".title-2");
-const serviceTitle3 = document.querySelector(".title-3");
 
-const serviceDetails1 = document.querySelector(".details-1");
-const serviceDetails2 = document.querySelector(".details-2");
-const serviceDetails3 = document.querySelector(".details-3");
-
-const list1 = document.querySelector(".list-hover-1");
-const list2 = document.querySelector(".list-hover-2");
-const list3 = document.querySelector(".list-hover-3");
-
-list1.addEventListener("mouseover", () => {
-  serviceNumber1.style.opacity = 1;
-});
-list1.addEventListener("mouseout", () => {
-  serviceNumber1.style.opacity = 0.5;
-});
-list2.addEventListener("mouseover", () => {
-  serviceNumber2.style.opacity = 1;
-});
-list2.addEventListener("mouseout", () => {
-  serviceNumber2.style.opacity = 0.5;
-});
-list3.addEventListener("mouseover", () => {
-  serviceNumber3.style.opacity = 1;
-});
-list3.addEventListener("mouseout", () => {
-  serviceNumber3.style.opacity = 0.5;
-});
-
-let first = 0;
+let currentIndex = 0;
 serviceBtnPrevious.disabled = true;
 
-function changeServiceList(val) {
-  if (val === "previous") {
-    first--;
-    serviceNumber1.textContent = serviceList1[first];
-    serviceNumber2.textContent = serviceList2[first];
-    serviceNumber3.textContent = serviceList3[first];
-    serviceTitle1.textContent = serviceTitle1Array[first];
-    serviceTitle2.textContent = serviceTitle2Array[first];
-    serviceTitle3.textContent = serviceTitle3Array[first];
-    serviceDetails1.textContent = serviceDetailsArray1[first];
-    serviceDetails2.textContent = serviceDetailsArray2[first];
-    serviceDetails3.textContent = serviceDetailsArray3[first];
-  } else {
-    first++;
+function updateServiceList() {
+  serviceLists.forEach((list, i) => {
+    serviceNumberEls[i].textContent = list.numbers[currentIndex];
+    serviceTitleEls[i].textContent = list.titles[currentIndex];
+    serviceDetailsEls[i].textContent = list.details[currentIndex];
+  });
 
-    serviceNumber1.textContent = serviceList1[first];
-    serviceNumber2.textContent = serviceList2[first];
-    serviceNumber3.textContent = serviceList3[first];
-    serviceTitle1.textContent = serviceTitle1Array[first];
-    serviceTitle2.textContent = serviceTitle2Array[first];
-    serviceTitle3.textContent = serviceTitle3Array[first];
-    serviceDetails1.textContent = serviceDetailsArray1[first];
-    serviceDetails2.textContent = serviceDetailsArray2[first];
-    serviceDetails3.textContent = serviceDetailsArray3[first];
-  }
-
-  if (first === serviceList1.length - 1) {
-    serviceBtnNext.disabled = true;
-  } else {
-    serviceBtnNext.disabled = false;
-  }
-
-  if (first === serviceList3.length - 5) {
-    serviceBtnPrevious.disabled = true;
-  } else {
-    serviceBtnPrevious.disabled = false;
-  }
+  serviceBtnNext.disabled = currentIndex === serviceLists[0].numbers.length - 1;
+  serviceBtnPrevious.disabled = currentIndex === 0;
 }
+
+function changeServiceList(direction) {
+  if (direction === "previous") {
+    currentIndex--;
+  } else {
+    currentIndex++;
+  }
+
+  updateServiceList();
+}
+
+listEls.forEach((listEl, i) => {
+  listEl.addEventListener("mouseover", () => {
+    serviceNumberEls[i].style.opacity = 1;
+  });
+  listEl.addEventListener("mouseout", () => {
+    serviceNumberEls[i].style.opacity = 0.5;
+  });
+});
+
+serviceBtnNext.addEventListener("click", () => {
+  changeServiceList("next");
+});
+serviceBtnPrevious.addEventListener("click", () => {
+  changeServiceList("previous");
+});
 
 // SECTION-WINEMAKING
 
-const winedot1 = document.querySelector(".wine-1");
-const winedot2 = document.querySelector(".wine-2");
-const winedot3 = document.querySelector(".wine-3");
+const wineDots = [
+  document.querySelector(".wine-1"),
+  document.querySelector(".wine-2"),
+  document.querySelector(".wine-3"),
+];
 const winemakingPhoto = document.querySelector(".winemaking-photo");
-winedot1.classList.add("wine-dot-active");
-
 const winemakingPhotosArray = [
   "./images/winemaking/winameking-1-.jpg",
   "./images/winemaking/winemaking-2.jpg",
   "./images/winemaking/winemaking-3.jpg",
 ];
 
-function changeWinemakingCover1() {
-  winedot1.classList.add("wine-dot-active");
-  winedot2.classList.remove("wine-dot-active");
-  winedot3.classList.remove("wine-dot-active");
-  winemakingPhoto.src = winemakingPhotosArray[0];
+function setActiveDot(index) {
+  wineDots.forEach((dot, i) => {
+    if (i === index) {
+      dot.classList.add("wine-dot-active");
+    } else {
+      dot.classList.remove("wine-dot-active");
+    }
+  });
 }
-function changeWinemakingCover2() {
-  winedot2.classList.add("wine-dot-active");
-  winedot1.classList.remove("wine-dot-active");
-  winedot3.classList.remove("wine-dot-active");
-  winemakingPhoto.src = winemakingPhotosArray[1];
+
+function changeWinemakingCover(index) {
+  setActiveDot(index);
+  winemakingPhoto.src = winemakingPhotosArray[index];
 }
-function changeWinemakingCover3() {
-  winedot3.classList.add("wine-dot-active");
-  winedot2.classList.remove("wine-dot-active");
-  winedot1.classList.remove("wine-dot-active");
-  winemakingPhoto.src = winemakingPhotosArray[2];
-}
+
+wineDots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    changeWinemakingCover(index);
+  });
+});
+
+// Set the initial active dot
+setActiveDot(0);
 
 // FOOTER
 const currentYear = new Date().getFullYear();
@@ -593,133 +426,39 @@ const emailInput = document.querySelector(".email");
 const phoneInput = document.querySelector(".phone");
 const textareaInput = document.querySelector(".textarea");
 const errorMsg = document.querySelector(".error");
-const errorMsg2 = document.querySelector(".error-2");
-const errorMsg3 = document.querySelector(".error-3");
-const errorMsg4 = document.querySelector(".error-4");
-const errorMsg5 = document.querySelector(".error-5");
-const errorMsg6 = document.querySelector(".error-6");
-const errorMsg7 = document.querySelector(".error-7");
 
 const sendButton = document.querySelector(".send");
 
-// sendButton.addEventListener("click", (event) => {
-//   event.preventDefault();
+function isValid(input, regex) {
+  return regex.test(input.value) && input.value.trim() !== "";
+}
 
-//   let valid = true;
-
-//   if (
-//     !isEnglishWord.test(fNameInput.value) ||
-//     !isNotEmpty.test(fNameInput.value)
-//   ) {
-//     valid = false;
-//   }
-
-//   if (
-//     !isEnglishWord.test(lNameInput.value) ||
-//     !isNotEmpty.test(lNameInput.value)
-//   ) {
-//     valid = false;
-//   }
-
-//   if (!isEmail.test(emailInput.value) || !isNotEmpty.test(emailInput.value)) {
-//     valid = false;
-//   }
-
-//   if (
-//     !isPhoneNumber.test(phoneInput.value) ||
-//     !isNotEmpty.test(phoneInput.value)
-//   ) {
-//     valid = false;
-//   }
-
-//   if (
-//     !isEnglishWord.test(textareaInput.value) ||
-//     !isNotEmpty.test(textareaInput.value)
-//   ) {
-//     valid = false;
-//   }
-
-//   if (!valid) {
-//     errorMsg.textContent = "Please fill up all fields with English letters.";
-//     errorMsg.style.color = "#ff4234";
-//     // sendButton.style.display = "none";
-
-//     // sendButton.style.opacity = 0;
-//     // setTimeout(() => {
-//     //   sendButton.style.display = "none";
-//     //   errorMsg.textContent = "Please fill up all fields with English letters.";
-//     //   errorMsg.style.color = "#ff4234";
-//     // }, 500);
-//   } else {
-//     errorMsg.textContent = "";
-//     // sendButton.style.opacity = 1;
-//     sendButton.style.display = "block";
-//     // errorMsg.textContent = "Please fill up all fields with English letters.";
-//     // errorMsg.style.color = "#ff4234";
-//     // errorMsg.textContent = "";
-//     // form.submit();
-//   }
-// });
+function handleErrorMessage(showError) {
+  if (showError) {
+    errorMsg.textContent = "Please fill up all fields with English letters.";
+    errorMsg.style.color = "#ff4234";
+  } else {
+    errorMsg.textContent = "";
+  }
+}
 
 function myFunction(e) {
   e.preventDefault();
 
-  let valid = true;
+  const validations = [
+    isValid(e.target.firstName, isEnglishWord),
+    isValid(e.target.lastName, isEnglishWord),
+    isValid(e.target.eMail, isEmail),
+    isValid(e.target.phoneNumber, isPhoneNumber),
+    isValid(e.target.comment, isEnglishWord),
+  ];
 
-  if (
-    !isEnglishWord.test(e.target.firstName.value) ||
-    !isNotEmpty.test(e.target.firstName.value)
-  ) {
-    valid = false;
-  }
+  const allValid = validations.every((valid) => valid);
 
-  if (
-    !isEnglishWord.test(e.target.lastName.value) ||
-    !isNotEmpty.test(e.target.lastName.value)
-  ) {
-    valid = false;
-  }
+  handleErrorMessage(!allValid);
 
-  if (
-    !isEmail.test(e.target.eMail.value) ||
-    !isNotEmpty.test(e.target.eMail.value)
-  ) {
-    valid = false;
-  }
-
-  if (
-    !isPhoneNumber.test(e.target.phoneNumber.value) ||
-    !isNotEmpty.test(e.target.phoneNumber.value)
-  ) {
-    valid = false;
-  }
-
-  if (
-    !isEnglishWord.test(e.target.comment.value) ||
-    !isNotEmpty.test(e.target.comment.value)
-  ) {
-    valid = false;
-  }
-
-  if (!valid) {
-    errorMsg.textContent = "Please fill up all fields with English letters.";
-    errorMsg.style.color = "#ff4234";
-    // sendButton.style.display = "none";
-
-    // sendButton.style.opacity = 0;
-    // setTimeout(() => {
-    //   sendButton.style.display = "none";
-    //   errorMsg.textContent = "Please fill up all fields with English letters.";
-    //   errorMsg.style.color = "#ff4234";
-    // }, 500);
-  } else {
-    errorMsg.textContent = "";
-    // sendButton.style.opacity = 1;
+  if (allValid) {
     sendButton.style.display = "block";
-    // errorMsg.textContent = "Please fill up all fields with English letters.";
-    // errorMsg.style.color = "#ff4234";
-    // errorMsg.textContent = "";
-    // form.submit();
 
     // POST REQUEST HERE >
 
@@ -739,21 +478,22 @@ function myFunction(e) {
   }
 }
 
+// ****** RESPONSIVE *******
+
 const foo1 = [
   "./images/villa/19th-wood.jpg",
   "./images/villa/19th-wood-3.jpg",
   "./images/villa/19th-wood-2.jpg",
 ];
 
-let photoIndex1 = 0;
-let photoIndex2 = 1;
-let photoIndex3 = 2;
-
-const photo1 = document.querySelector("#villa-1");
-const photo2 = document.querySelector("#villa-2");
-const photo3 = document.querySelector("#villa-3");
+const photoEls = [
+  document.querySelector("#villa-1"),
+  document.querySelector("#villa-2"),
+  document.querySelector("#villa-3"),
+];
 const century = document.querySelector("#century");
 const villaDescMobile = document.querySelector("#villa-desc-mobile");
+
 const foo2 = [
   {
     century: "19",
@@ -769,65 +509,25 @@ const foo2 = [
   },
 ];
 
+let photoIndex = 0;
+
+function updateImagesAndText() {
+  photoEls.forEach((photo, index) => {
+    photo.src = foo1[(photoIndex + index) % foo1.length];
+  });
+
+  century.textContent = foo2[photoIndex].century;
+  villaDescMobile.textContent = foo2[photoIndex].text;
+}
+
 function changeImageScale(val) {
   if (val === "next") {
-    photoIndex1++;
-    photoIndex2++;
-    photoIndex3++;
-
-    if (foo1[photoIndex1] === undefined) {
-      photoIndex1 = 0;
-      photo1.src = foo1[photoIndex1];
-      century.textContent = foo2[photoIndex1].century;
-      villaDescMobile.textContent = foo2[photoIndex1].text;
-    } else {
-      photo1.src = foo1[photoIndex1];
-
-      century.textContent = foo2[photoIndex1].century;
-      villaDescMobile.textContent = foo2[photoIndex1].text;
-    }
-
-    if (foo1[photoIndex2] === undefined) {
-      photoIndex2 = 0;
-      photo2.src = foo1[photoIndex2];
-    } else {
-      photo2.src = foo1[photoIndex2];
-    }
-    if (foo1[photoIndex3] === undefined) {
-      photoIndex3 = 0;
-      photo3.src = foo1[photoIndex3];
-    } else {
-      photo3.src = foo1[photoIndex3];
-    }
+    photoIndex = (photoIndex + 1) % foo1.length;
+  } else if (val === "previous") {
+    photoIndex = (photoIndex - 1 + foo1.length) % foo1.length;
   }
 
-  if (val === "previous") {
-    photoIndex1--;
-    photoIndex2--;
-    photoIndex3--;
-
-    if (foo1[photoIndex1] === undefined) {
-      photoIndex1 = 2;
-      photo1.src = foo1[photoIndex1];
-      century.textContent = foo2[photoIndex1].century;
-      villaDescMobile.textContent = foo2[photoIndex1].text;
-    } else {
-      photo1.src = foo1[photoIndex1];
-      century.textContent = foo2[photoIndex1].century;
-      villaDescMobile.textContent = foo2[photoIndex1].text;
-    }
-
-    if (foo1[photoIndex2] === undefined) {
-      photoIndex2 = 2;
-      photo2.src = foo1[photoIndex2];
-    } else {
-      photo2.src = foo1[photoIndex2];
-    }
-    if (foo1[photoIndex3] === undefined) {
-      photoIndex3 = 2;
-      photo3.src = foo1[photoIndex3];
-    } else {
-      photo3.src = foo1[photoIndex3];
-    }
-  }
+  updateImagesAndText();
 }
+
+updateImagesAndText();

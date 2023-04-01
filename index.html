@@ -218,7 +218,6 @@
             </div>
           </div>
           <div class="history-photos col-sm-12 col-md-6 col-lg-6">
-            <!-- <div class="history-photos"> -->
             <span class="history-number">01</span>
 
             <img
@@ -436,13 +435,13 @@
         <div>
           <h1 class="century-heading custom-animation">Choose Your Century</h1>
           <ul class="century custom-animation">
-            <li class="th-century century-19" onclick="changeCenturyTo19()">
+            <li class="th-century century-btn" onclick="changeCentury(0)">
               <span>19</span><span class="century-text">th Century</span>
             </li>
-            <li class="th-century century-20" onclick="changeCenturyTo20()">
+            <li class="th-century century-btn" onclick="changeCentury(1)">
               <span>20</span><span class="century-text">th Century</span>
             </li>
-            <li class="th-century century-21" onclick="changeCenturyTo21()">
+            <li class="th-century century-btn" onclick="changeCentury(2)">
               <span>21</span><span class="century-text">th Century</span>
             </li>
           </ul>
@@ -558,21 +557,11 @@
           <div>
             <ul class="service-button custom-animation">
               <li>
-                <button
-                  class="service-btn service-previous"
-                  onclick="changeServiceList('previous')"
-                >
-                  Previous
-                </button>
+                <button class="service-btn service-previous">Previous</button>
               </li>
               <li style="font-size: 2.4rem">/</li>
               <li>
-                <button
-                  class="service-btn service-next"
-                  onclick="changeServiceList('next')"
-                >
-                  Next
-                </button>
+                <button class="service-btn service-next">Next</button>
               </li>
             </ul>
           </div>
