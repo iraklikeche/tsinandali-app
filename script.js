@@ -87,62 +87,45 @@ const arrayOfPhotosAbout = [
 const arrayOfNumber = ["01", "02", "03", "04", "05", "06", "07"];
 
 let current = 0;
-let next = current + 1;
-const previousButton = document.querySelector(".previous");
 const mainPhoto = document.querySelector(".main-photo");
 const parallax = document.querySelector(".parallax");
 const btnNext = document.querySelector(".btn-next");
 const btnPrev = document.querySelector(".btn-prev");
 const number = document.querySelector(".history-number");
 
-btnPrev.disabled = true;
+function updateButtons() {
+  btnNext.disabled = current === arrayOfPhotosAbout.length - 2;
+  btnPrev.disabled = current === 0;
+}
 
-function changeImage(val) {
-  if (val === "previous") {
+function changeImage(direction) {
+  if (direction === "previous") {
     current--;
-    next--;
-    mainPhoto.src = arrayOfPhotosAbout[current];
-    parallax.src = arrayOfPhotosAbout[next];
   } else {
     current++;
-    next++;
-
-    mainPhoto.src = arrayOfPhotosAbout[current];
-    parallax.src = arrayOfPhotosAbout[next];
   }
 
+  mainPhoto.src = arrayOfPhotosAbout[current];
+  parallax.src = arrayOfPhotosAbout[current + 1];
   number.textContent = arrayOfNumber[current];
 
-  if (next === arrayOfPhotosAbout.length - 1) {
-    btnNext.disabled = true;
-  } else {
-    btnNext.disabled = false;
-  }
-
-  if (current === 0) {
-    btnPrev.disabled = true;
-  } else {
-    btnPrev.disabled = false;
-  }
+  updateButtons();
 }
 
 function toggleText(textId) {
-  const hiddenText = document.querySelector("#" + textId + " .hidden-text");
-  const readMoreBtn = document.querySelector(
-    "#" + textId + " + .read-more-btn"
-  );
-  const ellipsis = document.querySelector("#" + textId + " .ellipsis");
+  const hiddenText = document.querySelector(`#${textId} .hidden-text`);
+  const readMoreBtn = document.querySelector(`#${textId} + .read-more-btn`);
+  const ellipsis = document.querySelector(`#${textId} .ellipsis`);
 
-  if (hiddenText.style.display === "none" || !hiddenText.style.display) {
-    hiddenText.style.display = "inline";
-    ellipsis.style.display = "none";
-    readMoreBtn.textContent = "Read Less";
-  } else {
-    hiddenText.style.display = "none";
-    ellipsis.style.display = "inline";
-    readMoreBtn.textContent = "Read More";
-  }
+  const isHidden =
+    hiddenText.style.display === "none" || !hiddenText.style.display;
+
+  hiddenText.style.display = isHidden ? "inline" : "none";
+  ellipsis.style.display = isHidden ? "none" : "inline";
+  readMoreBtn.textContent = isHidden ? "Read Less" : "Read More";
 }
+
+updateButtons();
 
 // SETTING-SECTION
 function scrollElement(e) {
