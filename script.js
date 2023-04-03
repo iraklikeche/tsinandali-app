@@ -49,6 +49,9 @@ animateArea.forEach((item) => {
 const sideBar = document.querySelector("#side-bar");
 const menu = document.querySelector(".menu");
 const close = document.querySelector(".close");
+const hideSideBar = document.querySelector(".side-bar-hide");
+const sectionLink = document.querySelector(".menu-list");
+
 document.addEventListener("keydown", (event) => {
   if (event.key === "Tab") {
     event.preventDefault();
@@ -58,18 +61,28 @@ document.addEventListener("keydown", (event) => {
 if (menu) {
   menu.addEventListener("click", () => {
     sideBar.classList.add("show");
+    sideBar.style.display = "flex";
     menu.style.display = "none";
     close.style.display = "block";
+    hideSideBar.style.display = "block";
   });
 }
 
 if (close) {
   close.addEventListener("click", () => {
     sideBar.classList.remove("show");
+    sideBar.style.display = "none"; // Add this line to hide the #side-bar
     menu.style.display = "block";
     close.style.display = "none";
+    hideSideBar.style.display = "block";
   });
 }
+
+// if (sectionLink) {
+//   sectionLink.addEventListener("click", () => {
+//     console.log(1);
+//   });
+// }
 
 // ABOUT-SECTION
 
@@ -131,6 +144,7 @@ updateButtons();
 function scrollElement(e) {
   sideBar.classList.remove("show");
   menu.style.display = "block";
+  sideBar.style.display = "none";
   let element = document.getElementById(`${e}`);
   element.scrollIntoView({ block: "start", behavior: "smooth" });
 }

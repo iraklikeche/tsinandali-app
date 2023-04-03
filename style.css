@@ -64,6 +64,12 @@
   font-style: normal;
 }
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: "AvenirNext", "Baskerville", "BrooklynSamuelsFive",
     "HelveticaNeue", sans-serif;
@@ -75,12 +81,8 @@ html {
   overflow-x: hidden;
   font-size: 62.5%;
   scroll-behavior: smooth;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
 }
 
 ul {
@@ -321,6 +323,10 @@ hr {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.side-bar-hide {
+  display: none;
 }
 
 #side-bar {
@@ -960,7 +966,7 @@ hr {
 }
 
 .winemaking-photo {
-  max-width: 115%;
+  max-width: 100%;
   padding: 6.2rem;
   padding-bottom: 17.6rem;
   background-color: #fff;
@@ -1197,55 +1203,120 @@ footer {
   }
 
   .setting-title {
-    transform: rotate(270deg) translate(-8%, -84%);
-    right: 38%;
+    transform: rotate(270deg) translate(5%, -84%);
+    right: 43%;
+    font-size: 7.6rem;
   }
+
+  .winemaking-box {
+    padding-top: 25.4rem;
+  }
+
   .cube3 {
     padding-top: 2rem;
+  }
+
+  .top-photo {
+    transform: translate(38%, -10%) rotate(320deg);
+    width: 12%;
+  }
+
+  .right-photo {
+    transform: translate(36%, 8%) rotate(-9deg);
+  }
+  .left-photo {
+    transform: rotate(7deg) translate(10%, 8%);
+  }
+
+  .setting-prev-next {
+    transform: translate(-52%, 66%);
+  }
+
+  footer {
+    height: 135vh;
   }
 }
 
 @media (max-width: 1248px) {
+  .heading-primary {
+    font-size: 9rem;
+  }
   .cube3 {
     padding: 3rem;
     font-size: 1.8rem;
   }
 
   .setting-title {
-    transform: rotate(270deg) translate(-9%, -83%);
+    font-size: 6.2rem;
+    transform: rotate(270deg) translate(13%, -83%);
   }
+
   .center-photo {
-    transform: translate(20%, 50%);
-    height: 50%;
+    transform: translate(20%, 30%);
+    height: 65%;
     z-index: 9999;
   }
   .top-photo {
-    position: absolute;
-    top: 20%;
+    top: 12%;
     transform: translate(45%, 2%) rotate(320deg);
     width: 13%;
   }
 
   .left-photo {
-    transform: rotate(7deg) translate(21%, 39%);
+    transform: rotate(7deg) translate(20%, 9%);
     width: 30%;
     z-index: 9;
   }
 
   .right-photo {
     width: 30%;
-    transform: translate(44%, 39%) rotate(-9deg);
+    transform: translate(45%, 9%) rotate(-9deg);
+  }
+
+  .setting-prev-next {
+    font-size: 4.2rem;
+  }
+
+  .btn {
+    font-size: 5.6rem;
   }
 
   .winemaking-description {
     font-size: 1.6rem;
   }
+
+  .century-heading {
+    font-size: 5.2rem;
+  }
+
+  .enquire {
+    font-size: 6.4rem;
+  }
+
+  .section-6 {
+    padding-bottom: 7.2rem;
+  }
 }
 
 @media (max-width: 1200px) {
+  .links {
+    right: 12%;
+  }
+  .horizontal-line {
+    top: 40%;
+  }
+
+  .number-text {
+    top: 41%;
+    transform: translate(135%, 90%) rotate(90deg);
+  }
+  .prev-next {
+    font-size: 4.2rem;
+    transform: translate(-41%, 80%);
+  }
   .center-photo {
-    top: 0%;
-    height: 45%;
+    transform: translate(20%, 26%);
+    height: 65%;
   }
 
   .left-photo {
@@ -1272,7 +1343,7 @@ footer {
     width: 80%;
   }
   .winemaking-photo {
-    max-width: 115%;
+    max-width: 100%;
   }
   .section-5 {
     height: 130vh;
@@ -1332,8 +1403,12 @@ footer {
     font-size: 1.4rem;
   }
 
+  .section-3 {
+    padding: 0;
+  }
+
   .setting-title {
-    transform: rotate(270deg) translate(-20%, -67%);
+    transform: rotate(270deg) translate(-4%, -84%);
   }
 
   .setting-description {
@@ -1358,15 +1433,23 @@ footer {
   }
 
   .century-villa {
-    margin-bottom: 15rem;
+    margin-bottom: 20rem;
+  }
+
+  .th-century {
+    padding: 4.2rem;
   }
 
   .enquire {
-    font-size: 6.2rem;
+    font-size: 5.2rem;
   }
 }
 
 @media (max-width: 1080px) {
+  .links {
+    right: 13%;
+    transform: translate(64%, -20%);
+  }
   .right-photo {
     width: 33%;
     transform: translate(44%, 12%) rotate(-9deg);
@@ -1394,8 +1477,10 @@ footer {
   }
 
   .history-number {
+    font-size: 14rem;
     top: -6%;
     right: 33%;
+    transform: translate(40%, -3%);
   }
 
   .main-photo {
@@ -1429,32 +1514,32 @@ footer {
   }
 
   .setting-title {
-    transform: rotate(270deg) translate(-20%, 0%);
+    transform: rotate(270deg) translate(-4%, 15%);
   }
 
   .center-photo {
-    height: 40%;
+    height: 65%;
   }
 
   .left-photo {
-    transform: rotate(7deg) translate(-17%, -15%);
-    width: 27%;
+    transform: rotate(7deg) translate(-17%, 9%);
+    width: 35%;
   }
 
   .right-photo {
-    width: 27%;
-    transform: translate(37%, -15%) rotate(-9deg);
+    width: 35%;
+    transform: translate(32%, 5%) rotate(-9deg);
   }
 
   .top-photo {
-    top: 17%;
-    transform: translate(50%, 8%) rotate(320deg);
+    top: 19%;
+    transform: translate(68%, -22%) rotate(320deg);
   }
 
   .setting-prev-next {
     font-size: 4.2rem;
-    bottom: 30%;
-    right: 2%;
+    bottom: 8%;
+    right: 0%;
     transform: translate(-61%, 50%);
   }
 
@@ -1625,8 +1710,9 @@ footer {
   }
 
   .history-number {
-    top: -6%;
-    right: 23%;
+    top: -5%;
+    right: 28%;
+    font-size: 11rem;
   }
 
   .setting-heading {
@@ -1638,40 +1724,48 @@ footer {
   }
 
   .setting-title {
-    transform: rotate(270deg) translate(-44%, -51%);
+    transform: rotate(270deg) translate(-25%, -51%);
   }
   .setting-photos {
     justify-content: center;
   }
 
+  .center-photo {
+    height: 60%;
+    top: 0%;
+    transform: translate(-5%, 26%);
+  }
+
   .right-photo {
-    width: 35%;
-    transform: translate(77%, -10%) rotate(-9deg);
+    width: 45%;
+    transform: translate(16%, -2%) rotate(-9deg);
   }
 
   .left-photo {
-    transform: rotate(7deg) translate(-17%, -10%);
-    width: 35%;
+    transform: rotate(7deg) translate(-28%, -1%);
+    width: 45%;
   }
 
   .top-photo {
-    top: 17%;
-    transform: translate(44%, -3%) rotate(320deg);
+    top: 13%;
+    transform: translate(6%, -8%) rotate(320deg);
   }
 
   .setting-prev-next {
-    right: -10%;
+    right: -3%;
+    bottom: 12%;
   }
 
   .century-villa {
     gap: 0rem;
+    margin-bottom: 10rem;
   }
 
   .villa-1-photo,
   .villa-2-photo,
   .villa-4-photo {
-    max-width: 90%;
-    height: 90%;
+    max-width: 100%;
+    height: 100%;
   }
 
   .villa-description {
@@ -1688,7 +1782,17 @@ footer {
   }
 
   .cube2 {
+    height: 31vh;
     padding-left: 1rem;
+  }
+
+  .cube3 {
+    padding: 2rem;
+    font-size: 2rem;
+    margin-bottom: 0;
+    margin-left: 1rem;
+    width: 92%;
+    height: 42%;
   }
 
   .service-box {
@@ -1712,12 +1816,53 @@ footer {
   }
 }
 
+@media (max-width: 878px) {
+  .center-photo {
+    height: 58%;
+    top: 0%;
+    transform: translate(-7%, 26%);
+  }
+
+  .right-photo {
+    width: 43%;
+    transform: translate(14%, -2%) rotate(-9deg);
+  }
+
+  .left-photo {
+    transform: rotate(7deg) translate(-30%, 1%);
+    width: 43%;
+  }
+
+  .top-photo {
+    top: 13%;
+    transform: translate(0%, -8%) rotate(320deg);
+  }
+
+  .setting-prev-next {
+    right: -6%;
+  }
+
+  .villa-1-photo,
+  .villa-2-photo,
+  .villa-4-photo {
+    max-width: 95%;
+  }
+
+  .cube3 {
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    width: 91%;
+    height: 37%;
+  }
+}
+
 @media (max-width: 768px) {
   .nav-bar {
     padding: 4rem 5rem 0;
   }
 
   #side-bar {
+    display: none;
     width: 100%;
   }
 
@@ -1826,32 +1971,30 @@ footer {
   }
 
   .center-photo {
-    height: 45%;
-    transform: translate(0%, 100%);
+    height: 40%;
+    transform: translate(0%, 130%);
   }
-
   .setting-title {
+    width: 50%;
     transform: rotate(360deg) translate(3%, 475%);
     bottom: 50%;
-    right: -15%;
-    font-size: 5.8rem;
+    right: 32%;
   }
 
   .right-photo {
-    width: 57%;
-    transform: translate(53%, 80%) rotate(-9deg);
+    width: 35%;
+    transform: translate(21%, 78%) rotate(-9deg);
   }
 
   .left-photo {
-    transform: rotate(7deg) translate(-28%, 85%);
-    width: 57%;
+    transform: rotate(7deg) translate(-8%, 79%);
+    width: 35%;
   }
 
   .top-photo {
-    position: absolute;
-    top: 28%;
-    transform: translate(1%, 46%) rotate(320deg);
-    width: 39%;
+    top: 37%;
+    transform: translate(11%, 49%) rotate(320deg);
+    width: 20%;
   }
 
   .setting-prev-next {
@@ -1897,14 +2040,6 @@ footer {
     transform: rotate(180deg);
   }
 
-  /* .foo {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5rem;
-  } */
-
   .enquire-container {
     background-color: #386741;
     width: 70%;
@@ -1943,7 +2078,7 @@ footer {
   }
 
   .section-5 {
-    height: 175vh;
+    height: 200vh;
   }
 
   .service-description {
@@ -1988,7 +2123,6 @@ footer {
 
   .service-photo {
     margin: 3.2rem 0;
-    /* width: 100vw; */
   }
 
   .service-photo-case-2 {
@@ -2022,7 +2156,7 @@ footer {
   }
 
   .section-6 {
-    height: 180vh;
+    height: 250vh;
   }
 
   .winemaking-dots {
@@ -2041,7 +2175,7 @@ footer {
   }
 
   footer {
-    height: 60vh;
+    height: 80vh;
   }
 
   .social-media {
@@ -2097,10 +2231,17 @@ footer {
 }
 
 @media (max-width: 664px) {
+  .links {
+    right: 14%;
+  }
   .history-heading {
     padding-left: 2rem;
     margin-bottom: 10rem;
     font-size: 5.2rem;
+  }
+
+  .heading-primary {
+    font-size: 5rem;
   }
 
   .history-desc,
@@ -2115,13 +2256,18 @@ footer {
     padding-left: 2rem;
   }
 
+  .setting-title {
+    width: 50%;
+    right: 40%;
+  }
+
   .service-number {
     padding-right: 2rem;
   }
 
   .setting-prev-next {
-    bottom: -65%;
-    right: -35%;
+    bottom: 3%;
+    right: -7%;
   }
 
   .century-heading {
@@ -2137,17 +2283,17 @@ footer {
   }
 
   .center-photo {
-    height: 45%;
-    transform: translate(0%, 106%);
+    height: 40%;
+    transform: translate(0%, 128%);
   }
   .left-photo {
-    transform: rotate(7deg) translate(0%, 85%);
-    width: 55%;
+    transform: rotate(7deg) translate(0%, 80%);
+    width: 34%;
   }
 
   .right-photo {
-    width: 55%;
-    transform: translate(15%, 83%) rotate(-9deg);
+    width: 34%;
+    transform: translate(16%, 80%) rotate(-9deg);
   }
 
   .service-title {
@@ -2162,4 +2308,26 @@ footer {
   .service-btn-padding {
     padding-left: 2rem;
   }
-} ;
+
+  .section-4 {
+    padding: 0rem 0 10rem 0;
+    background-color: #f0f0f0;
+  }
+
+  .section-5 {
+    height: 235vh;
+  }
+}
+
+@media (max-width: 575px) {
+  .links {
+    right: 15%;
+  }
+  .service-button {
+    margin-left: 1rem;
+  }
+
+  .sm-mobile {
+    transform: translate(-67%, 80%);
+  }
+}
